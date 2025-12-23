@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { supabase } from '../client';
+import './viewCreators.css';
 
 function ViewCreator() {
   const { id } = useParams();
@@ -8,6 +10,7 @@ function ViewCreator() {
   const [creator, setCreator] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetchCreator = async () => {
@@ -25,21 +28,48 @@ function ViewCreator() {
       setLoading(false);
     };
 
+    (async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user ?? null);
+    })();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
     fetchCreator();
+
+    return () => {
+      subscription?.unsubscribe?.();
+    };
   }, [id]);
 
   const handleDelete = async () => {
     setError('');
+    if (!user) {
+      const msg = 'Please log in to delete creators.';
+      setError(msg);
+      toast.error(msg);
+      return;
+    }
+    if (!creator?.user_id || creator.user_id !== user.id) {
+      const msg = 'You can only delete your own creators.';
+      setError(msg);
+      toast.error(msg);
+      return;
+    }
     const { error: deleteError } = await supabase
       .from('creators')
       .delete()
       .eq('id', id);
 
     if (deleteError) {
-      setError(deleteError.message || 'Unable to delete creator.');
+      const msg = deleteError.message || 'Unable to delete creator.';
+      setError(msg);
+      toast.error(msg);
       return;
     }
-
+    toast.success('Creator deleted.');
     navigate('/');
   };
 
@@ -53,22 +83,29 @@ function ViewCreator() {
         <h1>{creator.name}</h1>
         <div className="view-actions">
           <Link to={`/edit/${creator.id}`} className="btn-edit">Edit</Link>
-          <button onClick={handleDelete} className="btn-delete">Delete</button>
+          {user && creator?.user_id === user.id && (
+            <button onClick={handleDelete} className="btn-delete">Delete</button>
+          )}
           <button onClick={() => navigate('/')} className="btn-secondary">Back</button>
         </div>
       </header>
 
-      {(creator.image_url || creator.image_url) && (
-        <div className="view-image">
-          <img src={creator.image_url || creator.image_url} alt={creator.name} />
-        </div>
-      )}
+      <div className="view-content">
+        {(creator.image_url || creator.image_url) && (
+          <div className="view-image">
+            <img src={creator.image_url || creator.image_url} alt={creator.name} />
+          </div>
+        )}
 
-      <p className="view-description">{creator.description}</p>
+        <div className="view-details">
+          <div className="description-box">
+            <h3>Description</h3>
+            <p className="view-description">{creator.description}</p>
+          </div>
 
-      <div className="social-links">
-        <h3>Social Media</h3>
-        <div className="social-links-grid">
+          <div className="social-links">
+            <h3>Social Media</h3>
+            <div className="social-links-grid">
           {creator.youtube && (
             <a href={creator.youtube} target="_blank" rel="noreferrer" className="social-link youtube">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -90,7 +127,7 @@ function ViewCreator() {
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </svg>
-              Twitter / X
+               Twitter
             </a>
           )}
           {creator.tiktok && (
@@ -109,6 +146,8 @@ function ViewCreator() {
               Twitch
             </a>
           )}
+        </div>
+          </div>
         </div>
       </div>
     </div>

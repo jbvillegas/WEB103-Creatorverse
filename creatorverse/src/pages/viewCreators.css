@@ -1,0 +1,214 @@
+/* VIEW CREATOR PAGE */
+.creator-view {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-3xl) var(--spacing-lg);
+}
+
+.view-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+  padding-bottom: var(--spacing-xl);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.view-header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.03em;
+  color: var(--orange);
+  line-height: 1.2;
+}
+
+.view-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.view-content {
+  display: flex;
+  gap: var(--spacing-2xl);
+  align-items: flex-start;
+}
+
+.view-image {
+  flex: 0 0 400px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--gray-100);
+  box-shadow: var(--shadow-md);
+}
+
+.view-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.view-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.view-description {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--text-color);
+  font-family: var(--font-family-alt);
+  font-weight: var(--font-weight-normal);
+}
+
+.view-description-section h3 {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-color);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+}
+
+.view-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-weight: var(--font-weight-medium);
+  font-size: 1rem;
+}
+
+.social-links {
+  background: var(--porcelain);
+  border: 0.05mm solid var(--orange);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+}
+
+.description-box {
+  background: var(--porcelain);
+  border: 0.05mm solid var(--orange);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+}
+
+.description-box h3 {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-color);
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: -0.02em;
+}
+
+.social-links h3 {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-color);
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: -0.02em;
+}
+
+.social-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: 0.875rem 1.25rem;
+  background: var(--porcelain);
+  font-size: 0.9375rem;
+  font-weight: var(--font-weight-medium);
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.social-link.youtube {
+  border-color: var(--youtube);
+  color: var(--youtube);
+}
+
+.social-link.youtube:hover {
+  background: var(--youtube);
+  color: var(--white);
+}
+
+.social-link.instagram {
+  border-color: var(--instagram-start);
+  color: var(--instagram-start);
+}
+
+.social-link.instagram:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: var(--white);
+  border-color: var(--instagram-end);
+}
+
+.social-link.twitter {
+  border-color: var(--black);
+  color: var(--black);
+}
+
+.social-link.twitter:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.social-link.tiktok {
+  border-color: var(--black);
+  color: var(--black);
+}
+
+.social-link.tiktok:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.social-link.twitch {
+  border-color: var(--twitch);
+  color: var(--twitch);
+}
+
+.social-link.twitch:hover {
+  background: var(--twitch);
+  color: var(--black);
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .view-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .view-content {
+    flex-direction: column;
+  }
+  
+  .view-image {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+  
+  .social-links-grid {
+    grid-template-columns: 1fr;
+  }
+}

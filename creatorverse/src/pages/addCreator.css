@@ -1,0 +1,107 @@
+/* ADD/EDIT CREATOR FORM */
+.creator-form-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-3xl) var(--spacing-lg);
+}
+
+.creator-form {
+  background: var(--porcelain);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-sm);
+
+}
+
+.creator-form h2 {
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.03em;
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-xl);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-xs);
+  letter-spacing: -0.01em;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  font-family: var(--font-family-alt);
+  color: var(--gray-900);
+  background: var(--background-form);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--gray-400);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xl);
+}
+
+.form-error {
+  color: var(--form-error);
+  font-weight: var(--font-weight-medium);
+  background: var(--porcelain);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--form-error);
+  margin-bottom: var(--spacing-md);
+}
+
+/* SOCIAL MEDIA SECTION */
+.social-media-section {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--orange);
+}
+
+.social-media-section h3 {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-color);
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 768px) {
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .form-actions button {
+    width: 100%;
+  }
+}

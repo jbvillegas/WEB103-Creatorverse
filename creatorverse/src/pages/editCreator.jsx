@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import { supabase } from '../client';
+import './editCreator.css';
 
 function EditCreator() {
   const navigate = useNavigate();
@@ -8,7 +10,7 @@ function EditCreator() {
   const [formData, setFormData] = useState({
     name: '',
     description: '',
-    img_url: '',
+    image_url: '',
     youtube: '',
     instagram: '',
     twitter: '',
@@ -22,8 +24,17 @@ function EditCreator() {
   const buttonText = submitting ? 'Updating...' : 'Update Creator';
 
   useEffect(() => {
-    fetchCreator();
-  }, [id]);
+    async function init() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        toast.error('Please log in to edit creators.');
+        navigate('/');
+        return;
+      }
+      await fetchCreator();
+    }
+    init();
+  }, [id, navigate]);
 
   const fetchCreator = async () => {
     const { data, error: fetchError } = await supabase
@@ -42,7 +53,7 @@ function EditCreator() {
       setFormData({
         name: data.name || '',
         description: data.description || '',
-        img_url: data.img_url || '',
+        image_url: data.image_url || '',
         youtube: data.youtube || '',
         instagram: data.instagram || '',
         twitter: data.twitter || '',
@@ -80,7 +91,7 @@ function EditCreator() {
       .update({
         name,
         description,
-        img_url: formData.img_url.trim(),
+        image_url: formData.image_url.trim(),
         youtube: formData.youtube.trim(),
         instagram: formData.instagram.trim(),
         twitter: formData.twitter.trim(),
@@ -148,12 +159,12 @@ function EditCreator() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="img_url">Image URL</label>
+          <label htmlFor="image_url">Image URL</label>
           <input
             type="url"
-            id="img_url"
-            name="img_url"
-            value={formData.img_url}
+            id="image_url"
+            name="image_url"
+            value={formData.image_url}
             onChange={handleChange}
             placeholder="https://www.example.com/image.jpg"
             disabled={submitting}

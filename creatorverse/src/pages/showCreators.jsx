@@ -1,25 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../client';
-import CreatorCard from '../components/creatorCard.jsx';
+import CreatorCard from '../components/CreatorCard.jsx';
 import SearchBar from '../components/SearchBar.jsx';
 import { useSearchParams } from 'react-router-dom';
+import './showCreators.css';
 
 function ShowCreators() {
     const [creators, setCreators] = useState([]);
     const [searchParams] = useSearchParams();
     const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        async function checkUser() {
+            const { data: { user } } = await supabase.auth.getUser();
+            setUser(user ?? null);
+        }
+        checkUser();
+
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => { 
+            setUser(session?.user ?? null);
+        });
+        return () => {
+            subscription.unsubscribe();
+        };
+    }, []);
 
     useEffect(() => {
         fetchCreators();
-    }, []);
+    }, [user]);
 
     const fetchCreators = async () => {
         try {
-            const { data, error } = await supabase
-                .from('creators')
-                .select('*')
-                .order('id', { ascending: false });
+            let query = supabase.from('creators').select('*');
+            
+            if (user) {
+                query = query.or(`is_public.eq.true,user_id.eq.${user.id}`);
+            } else {
+                query = query.eq('is_public', true);
+            }
+            
+            const { data, error } = await query.order('id', { ascending: false });
 
             if (error) {
                 console.error('Error fetching creators:', error);
@@ -69,10 +91,12 @@ function ShowCreators() {
                     </Link>
                 </div>
             ) : (
-                <div className="creators-grid">
-                    {filtered.map((creator) => (
-                        <CreatorCard key={creator.id} creator={creator} />
-                    ))}
+                <div className="loop-shell">
+                    <div className="loop-track">
+                        {[...filtered, ...filtered].map((creator, i) => (
+                            <CreatorCard key={`${creator.id}-${i}`} creator={creator} />
+                        ))}
+                    </div>
                 </div>
             )}
         </div>

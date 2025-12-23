@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { supabase } from '../client.js';
+import { AiFillGithub } from "react-icons/ai";
+import './NavBar.css';
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +16,38 @@ function NavBar() {
     navigate(path);
     setIsOpen(false);
   };
+  
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    async function checkUser() {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user ?? null);
+    }
+
+    checkUser();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  async function signInWithGitHub() {
+    await supabase.auth.signInWithOAuth({
+      provider: 'github',
+      options: { redirectTo: window.location.origin }
+    });
+  }
+
+  async function signOut(){
+    await supabase.auth.signOut();
+    setUser(null);
+    navigate('/');
+  }
 
   return (
     <nav className="navbar">
@@ -21,14 +56,19 @@ function NavBar() {
           <Link to="/" className="navbar-logo">
             Creatorverse
           </Link>
-
+          
           <div className="navbar-desktop">
-            <Link to="/" className="navbar-link">
-              Home
-            </Link>
-            <Link to="/add" className="navbar-link navbar-link-primary">
+            <Link to="/add" className="navbar-link-add">
               Add Creator
             </Link>
+
+            {user ? (
+              <div className="navbar-user">
+                <button className='btn-signout' onClick={signOut}>Sign Out</button>
+              </div>
+            ) : (
+              <button className='btn-login' onClick={signInWithGitHub}>Login with Github</button>
+            )}
           </div>
 
           <button
@@ -48,13 +88,13 @@ function NavBar() {
           <div className="navbar-mobile">
             <Link
               to="/"
-              className="navbar-mobile-link"
+              className="navbar-mobile-link-home"
               onClick={() => handleNavClick('/')}>
               Home
             </Link>
             <Link
               to="/add"
-              className="navbar-mobile-link navbar-mobile-link-primary"
+              className="navbar-mobile-link-add"
               onClick={() => handleNavClick('/add')}>
               Add Creator
             </Link>

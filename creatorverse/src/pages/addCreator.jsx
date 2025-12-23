@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../client';
+import './addCreator.css';
 
 function AddCreator() {
     const navigate = useNavigate();
+    const [user, setUser] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
         description: '',
-        img_url: '',
+        image_url: '',
         youtube: '',
         instagram: '',
         twitter: '',
@@ -16,6 +19,18 @@ function AddCreator() {
     });
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState('');
+
+    useEffect(() => {
+        async function checkUser() {
+            const { data: { user } } = await supabase.auth.getUser();
+            setUser(user ?? null);
+            if (!user) {
+                toast.error('Please log in to add a creator.');
+                navigate('/');
+            }
+        }
+        checkUser();
+    }, [navigate]);
 
     const buttonText = submitting ? 'Adding...' : 'Add Creator';
 
@@ -43,12 +58,13 @@ function AddCreator() {
                 {
                     name,
                     description,
-                    img_url: formData.img_url.trim(),
+                    image_url: formData.image_url.trim(),
                     youtube: formData.youtube.trim(),
                     instagram: formData.instagram.trim(),
                     twitter: formData.twitter.trim(),
                     tiktok: formData.tiktok.trim(),
                     twitch: formData.twitch.trim(),
+                    user_id: user.id,
                 },
             ])
             .select()
@@ -58,10 +74,14 @@ function AddCreator() {
 
         if (insertError) {
             setError(insertError.message || 'Unable to add creator.');
+            toast.error(insertError.message || 'Unable to add creator.');
             return;
         }
 
-        if (data) navigate('/');
+        if (data) {
+            toast.success('Creator added!');
+            navigate('/');
+        }
     };
 
     const handleCancel = (e) => {
@@ -105,12 +125,12 @@ function AddCreator() {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="img_url">Image URL</label>
+                    <label htmlFor="image_url">Image URL</label>
                     <input
                         type="url"
-                        id="img_url"
-                        name="img_url"
-                        value={formData.img_url}
+                        id="image_url"
+                        name="image_url"
+                        value={formData.image_url}
                         onChange={handleChange}
                         placeholder="https://www.example.com/image.jpg"
                         disabled={submitting}

@@ -1,5 +1,6 @@
 import './css/index.css';
 import { Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import NavBar from './components/NavBar.jsx';
 import ShowCreators from './pages/showCreators.jsx';
 import AddCreator from './pages/addCreator';
@@ -8,9 +9,14 @@ import ViewCreator from './pages/viewCreators.jsx';
 import Footer from './components/Footer.jsx';
 
 function App() {
+
   return (
+   
     <div className="app-wrapper">
       <NavBar />
+      <Toaster position="top-center" toastOptions={{
+        duration: 3000
+      }} />
       <Routes>
         <Route path="/" element={<ShowCreators />} />
         <Route path="/add" element={<AddCreator />} />

@@ -75,27 +75,18 @@
     margin-right: auto;
     padding: 0.5rem;
 }
-.btn-view-more {
+.btn-view-more, .btn-edit-more {
   color: var(--orange);
   font-size: 1.25rem;
 }
 
-.btn-view-more:hover {
+.btn-view-more:hover, .btn-edit-more:hover {
   color: var(--text-color);
   border-color: var(--orange);
   transform: scale(1.15);
-}
-
-.btn-edit-more {
-  color: var(--orange);
-  font-size: 1.25rem;
 }
 
 .card-actions .btn-edit-more {
   margin-left: auto;
 }
 
-.btn-edit-more:hover {
-  color: var(--text-color);
-  border-color: var(--orange);
-}

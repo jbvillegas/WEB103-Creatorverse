@@ -112,7 +112,9 @@ function EditCreator() {
 
   const handleCancel = (e) => {
     e.preventDefault();
-    navigate('/');
+    if (window.confirm('Are you sure you want to cancel? Any unsaved changes will be lost.')) {
+        navigate('/');
+    }
   };
 
   if (loading) {

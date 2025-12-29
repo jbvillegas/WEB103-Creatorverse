@@ -171,6 +171,21 @@ function EditCreator() {
             placeholder="https://www.example.com/image.jpg"
             disabled={submitting}
           />
+          {formData.image_url && (
+            <div className="image-preview-container">
+              <img 
+                src={formData.image_url} 
+                alt="Preview" 
+                className="image-preview"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
+                onLoad={(e) => {
+                  e.target.style.display = 'block';
+                }}
+              />
+            </div>
+          )}
         </div>
 
         <div className="social-media-section">

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../client.js';
-import { AiFillGithub } from "react-icons/ai";
 import '../css/nav-bar.css';
 
 function NavBar() {
@@ -18,6 +17,8 @@ function NavBar() {
   };
   
   const [user, setUser] = useState(null);
+  const [avatarOpen, setAvatarOpen] = useState(false);
+  const avatarRef = useRef(null);
 
   useEffect(() => {
     async function checkUser() {
@@ -34,6 +35,16 @@ function NavBar() {
     return () => {
       subscription.unsubscribe();
     };
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (avatarRef.current && !avatarRef.current.contains(event.target)) {
+        setAvatarOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   async function signInWithGitHub() {
@@ -56,15 +67,37 @@ function NavBar() {
           <Link to="/" className="navbar-logo">
             Creatorverse
           </Link>
-          
           <div className="navbar-desktop">
-            <Link to="/add" className="navbar-link-add">
-              Add Creator
-            </Link>
-
             {user ? (
-              <div className="navbar-user">
-                <button className='btn-signout' onClick={signOut}>Sign Out</button>
+              <div className="navbar-user" ref={avatarRef}>
+                <button
+                  type="button"
+                  className="avatar-button"
+                  onClick={() => setAvatarOpen((o) => !o)}
+                  aria-haspopup="menu"
+                  aria-expanded={avatarOpen}
+                >
+                  {user?.user_metadata?.avatar_url && (
+                    <img
+                      src={user.user_metadata.avatar_url}
+                      alt={user.user_metadata.full_name || 'GitHub avatar'}
+                      className="navbar-avatar"
+                    />
+                  )}
+                </button>
+                {avatarOpen && (
+                  <div className="navbar-menu" role="menu">
+                    <Link to="/" className="navbar-menu-item" role="menuitem" onClick={() => setAvatarOpen(false)}>
+                      Home
+                    </Link>
+                    <Link to="/add" className="navbar-menu-item" role="menuitem" onClick={() => setAvatarOpen(false)}>
+                      Add Creator
+                    </Link>
+                    <button className="navbar-menu-item" role="menuitem" onClick={signOut}>
+                      Sign Out
+                    </button>
+                  </div>
+                )}
               </div>
             ) : (
               <button className='btn-login' onClick={signInWithGitHub}>Login with Github</button>

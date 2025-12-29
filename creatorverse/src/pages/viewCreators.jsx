@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { supabase } from '../client';
-import './viewCreators.css';
+import '../css/view-creators.css';
 
 function ViewCreator() {
   const { id } = useParams();

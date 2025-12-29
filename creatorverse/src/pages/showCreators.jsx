@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../client';
-import CreatorCard from '../components/CreatorCard.jsx';
+import CreatorCard from '../components/creatorCard.jsx';
 import SearchBar from '../components/SearchBar.jsx';
 import { useSearchParams } from 'react-router-dom';
-import './showCreators.css';
+import '../css/show-creators.css';
 
 function ShowCreators() {
     const [creators, setCreators] = useState([]);

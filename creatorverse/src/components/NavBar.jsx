@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../client.js';
 import { AiFillGithub } from "react-icons/ai";
-import './NavBar.css';
+import '../css/nav-bar.css';
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);

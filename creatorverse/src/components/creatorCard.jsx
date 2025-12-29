@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './CreatorCard.css';
+import '../css/creator-card.css';
 import { TiInfoLargeOutline } from "react-icons/ti";
 import { RiYoutubeFill } from "react-icons/ri";
 import { TiSocialInstagram } from "react-icons/ti";

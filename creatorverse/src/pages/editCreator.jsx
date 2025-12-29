@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import { supabase } from '../client';
-import './editCreator.css';
+import '../css/edit-creator.css';
 
 function EditCreator() {
   const navigate = useNavigate();

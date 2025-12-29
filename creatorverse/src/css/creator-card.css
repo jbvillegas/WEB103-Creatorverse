@@ -13,7 +13,7 @@
 
 .creator-card:hover {
   transform: translateY(-4px);
-  border-color: var(--orange);
+  border-color: var(--mocha);
 
 }
 
@@ -46,7 +46,7 @@
 .card-content h3 {
   font-size: 1.5rem;
   font-weight: var(--font-weight-semibold);
-  color: var(--orange);
+  color: var(--mocha);
   letter-spacing: -0.01em;
   line-height: 1.3;
 }
@@ -76,13 +76,13 @@
     padding: 0.5rem;
 }
 .btn-view-more, .btn-edit-more {
-  color: var(--orange);
+  color: var(--mocha);
   font-size: 1.25rem;
 }
 
 .btn-view-more:hover, .btn-edit-more:hover {
   color: var(--text-color);
-  border-color: var(--orange);
+  border-color: var(--mocha);
   transform: scale(1.15);
 }
 

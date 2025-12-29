@@ -20,7 +20,7 @@
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.03em;
-  color: var(--orange);
+  color: var(--mocha);
   line-height: 1.2;
 }
 

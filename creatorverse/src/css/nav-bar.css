@@ -31,7 +31,7 @@
 }
 
 .navbar-logo:hover {
-  color: var(--orange);
+  color: var(--mocha);
 }
 
 .navbar-desktop {
@@ -52,7 +52,8 @@
 
 
 .navbar-link-add:hover {
-  color: var(--orange);
+  color: var(--mocha);
+  border-color: var(--mocha);
 }
 
 .navbar-toggle {
@@ -115,7 +116,7 @@
 
 .navbar-mobile-link-home:hover {
   background: var(--porcelain);
-  color: var(--orange);
+  color: var(--mocha);
 }
 
 .navbar-mobile-link-add {

@@ -255,7 +255,7 @@ button {
   justify-content: center;
   gap: var(--spacing-xs);
   padding: 0.875rem 1.75rem;
-  background: var(--text-color);
+  background: var(--dark-chocolate);
   color: var(--porcelain);
   font-size: 1rem;
   font-weight: var(--font-weight-medium);
@@ -266,22 +266,27 @@ button {
 .btn-login, .btn-signout {
   background: var(--white);
   text-decoration: none;
-  color: var(--orange);
+  color: var(--dark-chocolate);
   font-size: 1rem;
   padding: 0.625rem 1.25rem;
-  border: 0.25mm solid var(--orange);
+  border: 0.25mm solid var(--dark-chocolate);
 }
 
 .btn-login:hover, .btn-signout:hover {
-  color: var(--text-color);
+  color: var(--mocha);
 }
 
 .btn-add-creator:hover,
 .btn-submit:hover,
 .btn-edit:hover,
-.btn-delete:hover,
 .search-button:hover{
-  background: var(--orange);
+  background: var(--mocha);
+  box-shadow: var(--shadow-md);
+  border: none;
+}
+
+.btn-delete:hover {
+  background: #C62828;
   box-shadow: var(--shadow-md);
   border: none;
 }
@@ -306,6 +311,6 @@ button {
 .btn-cancel:hover,
 .btn-secondary:hover,
 .clear-button:hover {
-  background: var(--orange);
+  background: var(--mocha);
   border: none;
 }

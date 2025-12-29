@@ -16,6 +16,7 @@
   border: 0.25mm solid var(--mocha);
   padding: 0.75rem 1.25rem;
   transition: var(--transition);
+  position: relative;
 }
 
 .search-input-wrap:focus-within {
@@ -35,6 +36,37 @@
 
 .search-input::placeholder {
   color: var(--text-color);
+}
+
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border: 0.25mm solid var(--mocha);
+  border-top: none;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: var(--shadow-md);
+}
+
+.search-suggestion {
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: var(--transition);
+  border-bottom: 0.5px solid #f0f0f0;
+}
+
+.search-suggestion:hover {
+  background-color: var(--cream);
+  color: var(--mocha);
+}
+
+.search-suggestion:last-child {
+  border-bottom: none;
 }
 
 .search-meta {

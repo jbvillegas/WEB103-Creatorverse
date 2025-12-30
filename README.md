@@ -45,11 +45,11 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of the implemented features:
 
-- [Download WALKTHROUGH VIDEO](https://raw.githubusercontent.com/jbvillegas/WEB103-Creatorverse/main/public/creatorverse-demo.mp4)
+- [Download WALKTHROUGH VIDEO](https://raw.githubusercontent.com/jbvillegas/WEB103-Creatorverse/main/creatorverse/public/creatorverse-demo.mp4)
 
 Additional Media:
-![Screenshot 1](public/SC1.png)
-![Screenshot 2](public/SC2.png)
+![Screenshot 1](creatorverse/public/SC1.png)
+![Screenshot 2](creatorverse/public/SC2.png)
 
 
 ## Notes

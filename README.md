@@ -45,7 +45,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of the implemented features:
 
-- [Download WALKTHROUGH VIDEO](https://raw.githubusercontent.com/jbvillegas/Portfolio/main/creatorverse/public/creatorverse-demo.mp4)
+- [Download WALKTHROUGH VIDEO](https://raw.githubusercontent.com/jbvillegas/WEB103-Creatorverse/main/public/creatorverse-demo.mp4)
 
 Additional Media:
 ![Screenshot 1](public/SC1.png)

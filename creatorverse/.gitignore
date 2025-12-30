@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Large media (keep out of repo)
+src/assets/Creatorverse-Demo-Recording.mov
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

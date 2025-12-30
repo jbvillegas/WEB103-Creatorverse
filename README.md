@@ -45,8 +45,9 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of the implemented features:
 
-- 👉🏿 [Demo video (MOV)](https://raw.githubusercontent.com/jbvillegas/Portfolio/main/creatorverse/public/creatorverse-demo.mp4)
-<img src='creatorverse/public/creatorverse-demo.mp4' title='Video Walkthrough' alt='Video Walkthrough preview GIF' />
+- [Download DEMO video](https://raw.githubusercontent.com/jbvillegas/Portfolio/main/creatorverse/public/creatorverse-demo.mp4)
+- Additional Media:
+- 
 
 ## Notes
 

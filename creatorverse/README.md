@@ -1,10 +1,12 @@
 # WEB103 Prework - *Creatorverse*
 
-Submitted by: **Your Name Here**
+Submitted by: **Joaquin Baltasar Villegas**
 
-About this web app: **A minimalist platform for managing your favorite content creators. Discover, curate, and organize content creators from YouTube, Twitch, Instagram, Twitter, TikTok, and more. Build a collection that reflects your unique taste with features like search, authentication, and smooth scroll navigation.**
+About this web app: **Full-stack minimalistic web application that allows users to manage their favorite content creators from various platforms such as Youtube, Instagram, Twitch, Tiktok, and X. This application supports login with Github OAuth and full CRUD (Create, Read, Update, Delete) operations allowing users to add, view, edit, remove and keep track of creators from their personal collection.**
 
-Time spent: **X** hours
+**This application serves as a digital portfolio for content creators you like to follow closely. Each creator entry includes their name, a link to their main channel/page, a description of their content, and an image of them. The app is connected to a Supabase database for persistent data storage and uses React Router for seamless navigation between pages.**
+
+Time spent: **12** hours
 
 ## Required Features
 
@@ -43,10 +45,8 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of the implemented features:
 
-- 👉🏿 [Demo video (MOV)](https://raw.githubusercontent.com/jbvillegas/Portfolio/main/creatorverse/public/creatorverse-demo.mov)
-- (Optional) Add a GIF preview if you want inline playback in GitHub: place it in `creatorverse/public/` and replace the placeholder below.
-
-<img src='creatorverse/public/creatorverse-preview.gif' title='Video Walkthrough' alt='Video Walkthrough preview GIF' />
+- 👉🏿 [Demo video (MOV)](https://raw.githubusercontent.com/jbvillegas/Portfolio/main/creatorverse/public/creatorverse-demo.mp4)
+<img src='creatorverse/public/creatorverse-demo.mp4' title='Video Walkthrough' alt='Video Walkthrough preview GIF' />
 
 ## Notes
 
@@ -58,7 +58,7 @@ Challenges encountered while building the app:
 
 ## License
 
-Copyright [2025] [Your Name Here]
+Copyright [2025] [Joaquin Baltasar Villegas]
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 

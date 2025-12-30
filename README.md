@@ -2,9 +2,9 @@
 
 Submitted by: **Joaquin Baltasar Villegas**
 
-About this web app: **Full-stack minimalistic web application that allows users to manage their favorite content creators from various platforms such as Youtube, Instagram, Twitch, Tiktok, and X. This application supports login with Github OAuth and full CRUD (Create, Read, Update, Delete) operations allowing users to add, view, edit, remove and keep track of creators from their personal collection.
+About this web app: **Full-stack minimalistic web application that allows users to manage their favorite content creators from various platforms such as Youtube, Instagram, Twitch, Tiktok, and X. This application supports login with Github OAuth and full CRUD (Create, Read, Update, Delete) operations allowing users to add, view, edit, remove and keep track of creators from their personal collection.**
 
-This application serves as a digital portfolio for content creators you like to follow closely. Each creator entry includes their name, a link to their main channel/page, a description of their content, and an image of them. The app is connected to a Supabase database for persistent data storage and uses React Router for seamless navigation between pages.**
+**This application serves as a digital portfolio for content creators you like to follow closely. Each creator entry includes their name, a link to their main channel/page, a description of their content, and an image of them. The app is connected to a Supabase database for persistent data storage and uses React Router for seamless navigation between pages.**
 
 Time spent: **12** hours
 

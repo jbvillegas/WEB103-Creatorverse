@@ -91,9 +91,9 @@ function ViewCreator() {
       </header>
 
       <div className="view-content">
-        {(creator.image_url || creator.image_url) && (
+        {creator.image_url && (
           <div className="view-image">
-            <img src={creator.image_url || creator.image_url} alt={creator.name} />
+            <img src={creator.image_url} alt={creator.name} />
           </div>
         )}
 

@@ -43,16 +43,12 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented required features:
+Here's a walkthrough of the implemented features:
 
-👉🏿<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+- 👉🏿 [Demo video (MOV)](public/creatorverse-demo.mov)
+- (Optional) Add a GIF preview if you want inline playback in GitHub: place it in `public/` and replace the placeholder below.
 
-<!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  Loom
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
+<img src='public/creatorverse-preview.gif' title='Video Walkthrough' alt='Video Walkthrough preview GIF' />
 
 ## Notes
 

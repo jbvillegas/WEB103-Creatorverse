@@ -45,10 +45,10 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of the implemented features:
 
-- 👉🏿 [Demo video (MOV)](public/creatorverse-demo.mov)
-- (Optional) Add a GIF preview if you want inline playback in GitHub: place it in `public/` and replace the placeholder below.
+- 👉🏿 [Demo video (MOV)](https://raw.githubusercontent.com/jbvillegas/Portfolio/main/creatorverse/public/creatorverse-demo.mov)
+- (Optional) Add a GIF preview if you want inline playback in GitHub: place it in `creatorverse/public/` and replace the placeholder below.
 
-<img src='public/creatorverse-preview.gif' title='Video Walkthrough' alt='Video Walkthrough preview GIF' />
+<img src='creatorverse/public/creatorverse-preview.gif' title='Video Walkthrough' alt='Video Walkthrough preview GIF' />
 
 ## Notes
 
